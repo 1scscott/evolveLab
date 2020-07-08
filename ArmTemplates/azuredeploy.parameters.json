@@ -1,0 +1,18 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "cost_id": {
+      "value": "14203"
+    },
+    "department_id": {
+      "value": "788"
+    },
+    "sku": {
+      "value": "Basic"
+    },
+    "skucode": {
+      "value": "B1"
+    }
+  }
+}

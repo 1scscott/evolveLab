@@ -1,0 +1,169 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "location": {
+      "type": "string",
+      "defaultValue": "East US 2",
+      "allowedValues": [
+        "eastus2",
+        "centralus",
+        "East US 2",
+        "Central US"
+      ]
+    },
+    "planName": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().name]",
+      "metadata": {
+        "description": "The name of the app svc plan aka web server farm"
+      }
+    },
+    "appName": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().name]"
+    },
+    "sku": {
+      "type": "string",
+      "defaultValue": "Basic",
+      "allowedValues": [
+        "Standard",
+        "Basic",
+        "Free",
+        "Shared",
+        "Premium",
+        "Isolated"
+      ],
+      "metadata": {
+        "description": "The pricing tier for the hosting plan. Free, Developer, Basic, Standard, Premium or Isolated"
+      }
+    },
+    "skucode": {
+      "type": "string",
+      "defaultValue": "B1",
+      "allowedValues": [
+        "F1",
+        "D1",
+        "B1",
+        "B2",
+        "B3",
+        "S1",
+        "P1v2",
+        "P2v2",
+        "P3v2",
+        "I1",
+        "I2",
+        "I3"
+      ]
+    },
+    "workerSize": {
+      "type": "string",
+      "allowedValues": [
+        "0",
+        "1",
+        "2"
+      ],
+      "defaultValue": "0",
+      "metadata": {
+        "description": "The instance size of the hosting plan (small, medium, or large)."
+      }
+    },
+    "workerSizeId": {
+      "type": "string",
+      "defaultValue": "0"
+    },
+    "numberOfWorkers": {
+      "type": "string",
+      "defaultValue": "2"
+    },
+    "cost_id": {
+      "type": "string"
+    },
+    "department_id": {
+      "type": "string"
+    }
+  },
+  "variables": {
+    "resourceGroupName": "[resourceGroup().name]",
+    "subscriptionId": "[subscription().subscriptionId]",
+    "planName": "[tolower(concat(parameters('planName'),'-asp'))]",
+    "cost_center": "[concat(parameters('cost_id'), '-', parameters('department_id'))]",
+    "appName": "[tolower(concat(parameters('appName'),'-web'))]",
+    "serverFarmResourceGroup": "[resourceGroup().name]"
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Web/serverfarms",
+      "tags": {
+        "department_id": "[parameters('department_id')]",
+        "cost_id": "[parameters('cost_id')]",
+        "cost_center": "[variables('cost_center')]"
+      },
+      "sku": {
+        "Tier": "[parameters('sku')]",
+        "Name": "[parameters('skuCode')]"
+      },
+      "kind": "",
+      "name": "[variables('planName')]",
+      "apiVersion": "2018-11-01",
+      "location": "[parameters('location')]",
+      "properties": {
+        "name": "[variables('planName')]",
+        "workerSize": "[parameters('workerSize')]",
+        "workerSizeId": "[parameters('workerSizeId')]",
+        "numberOfWorkers": "[parameters('numberOfWorkers')]",
+        "reserved": false
+      }
+    },
+    {
+      "apiVersion": "2016-03-01",
+      "name": "[variables('appName')]",
+      "type": "Microsoft.Web/sites",
+      "tags": {
+        "department_id": "[parameters('department_id')]",
+        "cost_id": "[parameters('cost_id')]",
+        "cost_center": "[variables('cost_center')]"
+      },
+      "dependsOn": [
+        "[variables('planName')]"
+      ],
+      "properties": {
+        "name": "[variables('appName')]",
+        "siteConfig": {
+          "appSettings": [],
+          "use32BitWorkerProcess": false,
+          "alwaysOn": true,
+          "httpsOnly": true
+        },
+        "serverFarmId": "[concat('/subscriptions/', variables('subscriptionId'),'/resourcegroups/', variables('resourceGroupName'), '/providers/Microsoft.Web/serverfarms/', variables('planName'))]"
+      },
+      "location": "[parameters('location')]",
+      "resources": [
+        {
+          "apiVersion": "2016-08-01",
+          "type": "config",
+          "name": "web",
+          "dependsOn": [
+            "[variables('appName')]"
+          ],
+          "properties": {
+            "ipSecurityRestrictions": [
+              {
+                "ipAddress": "165.214.0.0",
+                "subnetMask": "255.255.0.0"
+              },
+              {
+                "ipAddress": "199.91.32.0",
+                "subnetMask": "255.255.248.0"
+              },
+              {
+                "ipAddress": "199.91.40.0",
+                "subnetMask": "255.255.254.0"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
