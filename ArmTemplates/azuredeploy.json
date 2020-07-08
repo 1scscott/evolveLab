@@ -148,18 +148,7 @@
           ],
           "properties": {
             "ipSecurityRestrictions": [
-              {
-                "ipAddress": "165.214.0.0",
-                "subnetMask": "255.255.0.0"
-              },
-              {
-                "ipAddress": "199.91.32.0",
-                "subnetMask": "255.255.248.0"
-              },
-              {
-                "ipAddress": "199.91.40.0",
-                "subnetMask": "255.255.254.0"
-              }
+         
             ]
           }
         }
