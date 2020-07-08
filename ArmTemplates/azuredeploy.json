@@ -77,17 +77,19 @@
       "defaultValue": "2"
     },
     "cost_id": {
-      "type": "string"
+      "type": "string",
+      "defaultValue" : "12345"
     },
     "department_id": {
-      "type": "string"
+      "type": "string",
+      "defaultValue" : "678"
     }
   },
   "variables": {
     "resourceGroupName": "[resourceGroup().name]",
     "subscriptionId": "[subscription().subscriptionId]",
     "planName": "[tolower(concat(parameters('planName'),'-asp'))]",
-    "cost_center": "[concat(parameters('cost_id'), '-', parameters('department_id'))]",
+    "cost_center": "12345-678",
     "appName": "[tolower(concat(parameters('appName'),'-web'))]",
     "serverFarmResourceGroup": "[resourceGroup().name]"
   },
