@@ -96,27 +96,136 @@ Deploying an ASP.NET web application to Azure App Service.
 
 >> Save your changes
 
->>>![](images/RackMultipart20200713-4-hutiz8_html_616be628aa5eb00f.png)
+>>> ![](images/RackMultipart20200713-4-hutiz8_html_616be628aa5eb00f.png)
 
 >> Repeat the compile steps from Section 3 above after making the change to the index file.
 
 >> Repeat the deploy steps from Section 4 to deploy and see the new code.
 
-![](images/RackMultipart20200713-4-hutiz8_html_6edd387a4f942f54.png)
+>>> ![](images/RackMultipart20200713-4-hutiz8_html_6edd387a4f942f54.png)
+
+#
 
 # Instructions for Visual Studio Code
 
-(In progress)
-
 ## Prequisites
 
-(In progress)
+>Visual Studio 2019 (or Visual Studio 2017) installed with the appropriate workloads:
+
+>>ASP.NET: ASP.NET and web development(In progress)
 
 ## Steps 
 
-(In progress)
-
 > ### I. Clone the evolveLab
+
+> 1. Open Visual Studio
+
+> 2. Select Clone a repository from the Get Started Menu
+
+>>> ![](images/Annotation2020-07-13183910.png)
+
+> 3. Enter the value 'https://github.com/1scscott/evolveLab.git' in the Repository location field
+
+
+>>> ![](images/Annotation2020-07-13184812.png)
+
+> 4. Click the 'Clone' button
+
+> 5. Wait for the repo to be cloned, when the 'Solution Explorer' window is opened it is done. You can also see the progress in the status bar lower left corner.
+
+>>> ![](images/Annotation2020-07-13220446.png)
+
+> ### II. Deploy the App Service from Infrastructure as Code
+
+> 1. In the 'Solution Explorer' window, right Mouse Click the 'Arm Templates' node. 
+
+>>> ![](images/Annotation2020-07-13221111.png)
+
+> 2. Hover over 'Deploy' in the context menu
+
+> 3. Select 'New...' in the sub menu
+
+>>> ![](images/Annotation2020-07-13222512.png)
+
+> 4. In the Deploy to Resource Group Form
+
+>>> a. Make sure '[14203-788] Public Cloud Lab' is selected for the 'Subscription' field
+
+>>> b. Make sure your '3-4' is selected as in the 'Resource Group' field
+
+>>> c. Make 'azuredeploy.json' is selectd in the 'Deployment Template' field
+
+>>> d. Make 'azuredeploy.parameters.json' is selectd in the 'Template Parameter' field
+
+> 5. Click Deploy
+
+>>> The Template to create the App Service and App Service Plan you will need to deploy your application when deploying.
+
+>>> To see the progress go to the ouput screenn and select you 3-4 in the 'Show output from:' dropdown.
+
+>>> ![](images/Annotation2020-07-13223900.png)
+
+>>> The status bar will show 'Ready' in the lower left when finished.
+
+>>> ![](images/Annotation2020-07-13224039.png)
+
+
+> ### III. Compile the ASP .net Code
+
+> 1. Open the 'Solution Explorer' window
+
+>>> ![](images/Annotation2020-07-13225254.png)
+
+> 2. Right mouse click the 'NetCoreSampleApp' node and select 'Rebuild' in the context menu
+
+>>> ![](images/Annotation2020-07-13225807.png)
+
+> 3. 'Rebuild All succeeded' will be displayed in the lower left corner of the status bar when complete.
+
+> ### IV. Deploy/Publish the ASP .net Code
+
+> 1. Right mouse click the 'NetCoreSampleApp' node and select 'Publish...' in the context menu
+
+>>> ![](images/Annotation2020-07-13230339.png)
+
+> 2. In the Publish screen, click 'New' link
+
+>>> ![](images/Annotation2020-07-13233722.png)
+
+> 3. Select Azure for your 'Target'
+
+>>> ![](images/Annotation2020-07-13234012.png)
+
+> 4. Click Next
+
+> 5. Select 'Azure App Service (Windows)' for your 'Specific Target'
+
+>>> ![](images/Annotation2020-07-13234437.png)
+
+> 4. Click Next
+
+> 5. Click the 'Sign In' link
+
+>>> ![](images/Annotation2020-07-13234746.png)
+
+> ### V. Customize the web app code, build and deploy update
+
+
+> 1. Open the Index.cshtml view file in the Views folder
+
+> 2. Update the value for ViewData["Title"] to "Evolve Cloud Lab Home"
+
+> 3. Save your changes
+
+>>> ![](images/RackMultipart20200713-4-hutiz8_html_616be628aa5eb00f.png)
+
+> 4. Repeat the compile steps from Section 3 above after making the change to the index file.
+
+> 5. Repeat the deploy/publish steps from Section 4 to deploy and see the new code.
+
+>>> ![](images/RackMultipart20200713-4-hutiz8_html_6edd387a4f942f54.png)
+
+#
 
 Resources
 
