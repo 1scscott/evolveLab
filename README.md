@@ -4,7 +4,7 @@ Deploying an ASP.NET web application to Azure App Service.
 
 [Instructions for Visual Studio Code](#Instructions-for-Visual-Studio-Code)
 
-[Instructions for Visual Studio Code](#Instructions-for-Visual-Studio)
+[Instructions for Visual Studio](#Instructions-for-Visual-Studio)
 
 # Instructions for Visual Studio Code
 ## Prequisites
