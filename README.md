@@ -169,6 +169,17 @@ Deploying an ASP.NET web application to Azure App Service.
 
 >>> ![](images/Annotation2020-07-13224039.png)
 
+> 6. Visit the [Azure Portal](https://portal.azure.com) to view your resources. If prompted, Login using username <your 3-4>@hca.corpad.net and AD password.
+
+>>> ![](images/Annotation2020-07-14092101.png)
+
+> 7. Click resource groups and filter by your ¾ ID  
+
+>>> ![](images/Annotation2020-07-14092810.png)
+
+> 8. Click the link for your resource group named '<your 3-4>' to see your resources.
+
+>>> ![](images/Annotation2020-07-14093232.png)
 
 > ### III. Compile the ASP .net Code
 
@@ -208,22 +219,51 @@ Deploying an ASP.NET web application to Azure App Service.
 
 >>> ![](images/Annotation2020-07-13234746.png)
 
+> 5. Pick option with or use your 3-4@hca.corpad.net id and use your network password to login if prompted . Skip to step 6, if the Publish dialogue is displayed.
+
+>>> ![](images/Annotation2020-07-14083002.png)
+
+> 6. Select the App Service You created in Section II in the Publish Dialogue. It should have the '<your 3-4>-web'
+
+>>> ![](images/Annotation2020-07-14084004.png)
+
+> 7. Click Finish to complete Publish Profile
+
+>>> ![](images/Annotation2020-07-14084304.png)
+
+> 8. Click Publish to deploy the ASP.NET application
+
+> 9. The application is successfully deployed
+
+>>> ![](images/Annotation2020-07-14084752.png)
+
+> 10. You can access the web application by ctrl-clicking the link as shown in the image above, highlighted in green. Or you can open a browser and enter 'https:\\<your 3-4>-web.azurewebsites.net.
+
+>>> ![](images/Annotation2020-07-14085422.png)
+
 > ### V. Customize the web app code, build and deploy update
 
-
 > 1. Open the Index.cshtml view file in the Views folder
+
+>>> ![](images/Annotation2020-07-14085726.png)
 
 > 2. Update the value for ViewData["Title"] to "Evolve Cloud Lab Home"
 
 > 3. Save your changes
 
->>> ![](images/RackMultipart20200713-4-hutiz8_html_616be628aa5eb00f.png)
+> 4. Deploy your changes my right mouse clicking NetCoreSampleApp project/node and selecting Publish
 
-> 4. Repeat the compile steps from Section 3 above after making the change to the index file.
+>>> ![](images/Annotation2020-07-14084304.png)
 
-> 5. Repeat the deploy/publish steps from Section 4 to deploy and see the new code.
+> 5. Click Publish to deploy the ASP.NET application
 
->>> ![](images/RackMultipart20200713-4-hutiz8_html_6edd387a4f942f54.png)
+> 9. The application is successfully deployed
+
+>>> ![](images/Annotation2020-07-14091043.png)
+
+> 10. You can access the new version of the web application by ctrl-clicking the link as shown in the image above, highlighted in green. Or you can open a browser and enter 'https:\\<your 3-4>-web.azurewebsites.net.
+
+>>> ![](images/Annotation2020-07-14091346.png)
 
 #
 
