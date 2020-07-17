@@ -36,7 +36,7 @@ Deploying an ASP.NET web application to Azure App Service.
 
 >> In the VS Code terminal, set the Azure Subscription context by running:
 
->>>**Select-AzSubscription -Subscription &quot;eea4815d-680b-4180-91f3-da0793ee5279&quot;**
+>>>**Select-AzSubscription -Subscription &quot;xxxxxxxxxxxxxxxxxxxxx&quot;**
 
 >> Run the App Service Web App deployment template using the following command.
 
